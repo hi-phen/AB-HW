@@ -1,9 +1,8 @@
 |===
-|Name|Optional|Format|Description
+|Name|Format|Description
 
 {{#parameters}}
 |{{#tableCellContent}}`+{{name}}+`{{/tableCellContent}}
-|{{#tableCellContent}}{{#optional}}true{{/optional}}{{/tableCellContent}}
 |{{#tableCellContent}}{{#format}}{{.}}{{/format}}{{/tableCellContent}}
 |{{#tableCellContent}}{{description}}{{/tableCellContent}}
 {{/parameters}}
