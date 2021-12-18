@@ -5,7 +5,7 @@
 :toc: left
 :toclevels: 3
 :sectlinks:
-:snippets: ../../../build/generated-snippets
+:snippets: ./build/generated-snippets
 
 == 전화번호 인증 요청
 

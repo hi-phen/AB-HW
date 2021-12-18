@@ -47,8 +47,8 @@ asciidoctor {
 
 bootJar {
     dependsOn asciidoctor
-    project.logger.lifecycle("${asciidoctor.outputDir}")
     from("${asciidoctor.outputDir}") {
         into 'static/docs'
     }
+    archiveFileName.set "${rootProject.name}.jar"
 }
