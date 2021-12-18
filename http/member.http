@@ -24,3 +24,22 @@ Content-Type: application/json
 ### 회원 조회
 GET http://localhost:8080/member/1
 Authorization: 1
+
+### 비밀번호 재설정
+PUT http://localhost:8080/member/010-1234-1234
+Content-Type: application/json
+
+{
+  "mobileAuthToken": "010-1234-1234",
+  "password": "PWD"
+}
+
+### 비밀번호 재설정 후 다시 로그인
+POST http://localhost:8080/member/login
+Content-Type: application/json
+
+{
+  "loginKeyType": "EMAIL",
+  "key": "email@emali.com",
+  "password": "PWD"
+}
