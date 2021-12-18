@@ -1,0 +1,166 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MobileAuthController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.mobileauth.web</a>
+</div>
+
+<h1>Coverage Summary for Class: MobileAuthController (com.ms.member.mobileauth.web)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MobileAuthController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.mobileauth.web;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.mobileauth.service.AuthenticateMobileAuthNumberUseCase;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.mobileauth.service.RequestMobileAuthUseCase;
+<i class="no-highlight">5</i>&nbsp;import com.ms.member.mobileauth.service.command.MobileAuthNumberAuthenticateCommand;
+<i class="no-highlight">6</i>&nbsp;import com.ms.member.mobileauth.service.command.MobileAuthRequestCommand;
+<i class="no-highlight">7</i>&nbsp;import com.ms.member.mobileauth.service.exception.InvalidAuthNumberException;
+<i class="no-highlight">8</i>&nbsp;import com.ms.member.mobileauth.web.model.AuthenticateMobileAuthNumberRequest;
+<i class="no-highlight">9</i>&nbsp;import com.ms.member.mobileauth.web.model.RequestMobileAuthRequest;
+<i class="no-highlight">10</i>&nbsp;import javax.validation.Valid;
+<i class="no-highlight">11</i>&nbsp;import lombok.RequiredArgsConstructor;
+<i class="no-highlight">12</i>&nbsp;import org.springframework.http.HttpStatus;
+<i class="no-highlight">13</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i class="no-highlight">14</i>&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+<i class="no-highlight">15</i>&nbsp;import org.springframework.web.bind.annotation.PostMapping;
+<i class="no-highlight">16</i>&nbsp;import org.springframework.web.bind.annotation.RequestBody;
+<i class="no-highlight">17</i>&nbsp;import org.springframework.web.bind.annotation.ResponseStatus;
+<i class="no-highlight">18</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;/**
+<i class="no-highlight">21</i>&nbsp; * 전화번호 인증 컨트롤러.
+<i class="no-highlight">22</i>&nbsp; */
+<i class="no-highlight">23</i>&nbsp;@RestController
+<b class="fc"><i class="no-highlight">24</i>&nbsp;@RequiredArgsConstructor</b>
+<i class="no-highlight">25</i>&nbsp;public class MobileAuthController {
+<i class="no-highlight">26</i>&nbsp;
+<i class="no-highlight">27</i>&nbsp;  private final RequestMobileAuthUseCase requestMobileAuthUseCase;
+<i class="no-highlight">28</i>&nbsp;  private final AuthenticateMobileAuthNumberUseCase authenticateMobileAuthNumberUseCase;
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;  /**
+<i class="no-highlight">31</i>&nbsp;   * 전화번호 인증 요청.
+<i class="no-highlight">32</i>&nbsp;   * 전화번호를 입력 받아 인증번호를 전송 한다.
+<i class="no-highlight">33</i>&nbsp;   *
+<i class="no-highlight">34</i>&nbsp;   * @param request 전화번호
+<i class="no-highlight">35</i>&nbsp;   */
+<i class="no-highlight">36</i>&nbsp;  @ResponseStatus(HttpStatus.OK)
+<i class="no-highlight">37</i>&nbsp;  @PostMapping(value = &quot;/mobile-auth/&quot;)
+<i class="no-highlight">38</i>&nbsp;  void requestMobileAuth(@RequestBody @Valid RequestMobileAuthRequest request) {
+<b class="fc"><i class="no-highlight">39</i>&nbsp;    requestMobileAuthUseCase.request(MobileAuthRequestCommand.of(request.getMobile()));</b>
+<i class="no-highlight">40</i>&nbsp;  }
+<i class="no-highlight">41</i>&nbsp;
+<i class="no-highlight">42</i>&nbsp;  /**
+<i class="no-highlight">43</i>&nbsp;   * 전회번호 인증 토큰 요청.
+<i class="no-highlight">44</i>&nbsp;   * 전화번호와 인증번호를 이용하여 인증 토큰을 요청한다.
+<i class="no-highlight">45</i>&nbsp;   *
+<i class="no-highlight">46</i>&nbsp;   * @param request 전화번호, 인증번호
+<i class="no-highlight">47</i>&nbsp;   * @return 인증토큰
+<i class="no-highlight">48</i>&nbsp;   */
+<i class="no-highlight">49</i>&nbsp;  @GetMapping(&quot;/mobile-auth/token&quot;)
+<i class="no-highlight">50</i>&nbsp;  ResponseEntity&lt;?&gt; getMobileAuthToken(
+<i class="no-highlight">51</i>&nbsp;      @Valid AuthenticateMobileAuthNumberRequest request) {
+<i class="no-highlight">52</i>&nbsp;    try {
+<b class="fc"><i class="no-highlight">53</i>&nbsp;      var result = authenticateMobileAuthNumberUseCase.authenticate(</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;          MobileAuthNumberAuthenticateCommand.of(request.getMobile(), request.getAuthNumber())</b>
+<i class="no-highlight">55</i>&nbsp;      );
+<b class="fc"><i class="no-highlight">56</i>&nbsp;      return ResponseEntity.ok(result);</b>
+<b class="fc"><i class="no-highlight">57</i>&nbsp;    } catch (InvalidAuthNumberException e) {</b>
+<b class="fc"><i class="no-highlight">58</i>&nbsp;      return ResponseEntity.badRequest().body(e.getMessage());</b>
+<i class="no-highlight">59</i>&nbsp;    }
+<i class="no-highlight">60</i>&nbsp;  }
+<i class="no-highlight">61</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

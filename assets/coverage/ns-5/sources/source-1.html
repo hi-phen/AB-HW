@@ -1,0 +1,172 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MobileAuthApiClient</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.mobileauth.client</a>
+</div>
+
+<h1>Coverage Summary for Class: MobileAuthApiClient (com.ms.member.mobileauth.client)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MobileAuthApiClient</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663</td>
+  </tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663$auxiliary$Hro9Me1q</td>
+  </tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663$auxiliary$JpWqEjHS</td>
+  </tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663$auxiliary$OIacLdA0</td>
+  </tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663$auxiliary$vtk4aSX5</td>
+  </tr>
+  <tr>
+    <td class="name">MobileAuthApiClient$MockitoMock$382032663$auxiliary$yAEqmm22</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.mobileauth.client;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.UUID;
+<i class="no-highlight">4</i>&nbsp;import org.springframework.stereotype.Component;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;/**
+<i class="no-highlight">7</i>&nbsp; * 외부 전화번호 인증 서비스를 호출하는 클라이언트.
+<i class="no-highlight">8</i>&nbsp; * 실제로 호출하지는 않기 때문에 응답을 모킹한다.
+<i class="no-highlight">9</i>&nbsp; */
+<i class="no-highlight">10</i>&nbsp;@Component
+<b class="nc"><i class="no-highlight">11</i>&nbsp;public class MobileAuthApiClient {</b>
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;  /**
+<i class="no-highlight">14</i>&nbsp;   * 전화번호 인증 시작 요청.
+<i class="no-highlight">15</i>&nbsp;   *
+<i class="no-highlight">16</i>&nbsp;   * @param mobile 전화번호.
+<i class="no-highlight">17</i>&nbsp;   */
+<i class="no-highlight">18</i>&nbsp;  public void requestMobileAuth(String mobile) {
+<i class="no-highlight">19</i>&nbsp;    // do nothing
+<i class="no-highlight">20</i>&nbsp;  }
+<i class="no-highlight">21</i>&nbsp;
+<i class="no-highlight">22</i>&nbsp;  /**
+<i class="no-highlight">23</i>&nbsp;   * 인증번호 인증 요청.
+<i class="no-highlight">24</i>&nbsp;   *
+<i class="no-highlight">25</i>&nbsp;   * @param mobile     전화 번호
+<i class="no-highlight">26</i>&nbsp;   * @param authNumber 인증 번호
+<i class="no-highlight">27</i>&nbsp;   * @return 항상 정상 인증을 가정하고 임의의 문자열(토큰)을 리턴한다.
+<i class="no-highlight">28</i>&nbsp;   */
+<i class="no-highlight">29</i>&nbsp;  public String authenticate(String mobile, String authNumber) {
+<b class="nc"><i class="no-highlight">30</i>&nbsp;    return UUID.randomUUID().toString();</b>
+<i class="no-highlight">31</i>&nbsp;  }
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;  /**
+<i class="no-highlight">34</i>&nbsp;   * 인증토큰 검증 요청.
+<i class="no-highlight">35</i>&nbsp;   *
+<i class="no-highlight">36</i>&nbsp;   * @param token 전화번호 인증 토큰
+<i class="no-highlight">37</i>&nbsp;   * @return 항상 정상 인증을 가정하고 빈 문자열을 리턴한다.
+<i class="no-highlight">38</i>&nbsp;   */
+<i class="no-highlight">39</i>&nbsp;  public String validate(String token) {
+<b class="nc"><i class="no-highlight">40</i>&nbsp;    return &quot;&quot;;</b>
+<i class="no-highlight">41</i>&nbsp;  }
+<i class="no-highlight">42</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

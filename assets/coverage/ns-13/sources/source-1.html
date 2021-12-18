@@ -1,0 +1,89 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ResetPasswordUseCase</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ResetPasswordUseCase (com.ms.member.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">ResetPasswordUseCase$MockitoMock$1950495433</td>
+  </tr>
+  <tr>
+    <td class="name">ResetPasswordUseCase$MockitoMock$1950495433$auxiliary$kwsnEmgT</td>
+  </tr>
+  <tr>
+    <td class="name">ResetPasswordUseCase$MockitoMock$1950495433$auxiliary$qLW9GAvq</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.exception.MemberNotFoundException;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.service.command.ResetPasswordCommand;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;/**
+<i class="no-highlight">7</i>&nbsp; * 비밀번호 재설정 유즈케이스.
+<i class="no-highlight">8</i>&nbsp; */
+<i class="no-highlight">9</i>&nbsp;public interface ResetPasswordUseCase {
+<i class="no-highlight">10</i>&nbsp;  void reset(ResetPasswordCommand command) throws MemberNotFoundException;
+<i class="no-highlight">11</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>
