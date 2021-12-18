@@ -1,0 +1,94 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MemberLoginUseCase</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.service</a>
+</div>
+
+<h1>Coverage Summary for Class: MemberLoginUseCase (com.ms.member.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">MemberLoginUseCase$MockitoMock$1767699007</td>
+  </tr>
+  <tr>
+    <td class="name">MemberLoginUseCase$MockitoMock$1767699007$auxiliary$qwnmE1gF</td>
+  </tr>
+  <tr>
+    <td class="name">MemberLoginUseCase$MockitoMock$1767699007$auxiliary$s5uVs7Nh</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.exception.MemberNotFoundException;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.service.command.MemberLoginCommand;
+<i class="no-highlight">5</i>&nbsp;import com.ms.member.service.domain.LoginKeyType;
+<i class="no-highlight">6</i>&nbsp;import com.ms.member.service.model.LoginToken;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;/**
+<i class="no-highlight">9</i>&nbsp; * 회원 로그인 유즈 케이스.
+<i class="no-highlight">10</i>&nbsp; */
+<i class="no-highlight">11</i>&nbsp;public interface MemberLoginUseCase {
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;  LoginToken login(MemberLoginCommand command) throws MemberNotFoundException;
+<i class="no-highlight">14</i>&nbsp;
+<i class="no-highlight">15</i>&nbsp;  LoginKeyType getLoginKeyType();
+<i class="no-highlight">16</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

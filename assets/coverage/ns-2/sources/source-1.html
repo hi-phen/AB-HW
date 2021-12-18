@@ -1,0 +1,149 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ControllerExceptionHandler</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.config</a>
+</div>
+
+<h1>Coverage Summary for Class: ControllerExceptionHandler (com.ms.member.config)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ControllerExceptionHandler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (2/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    38.5%
+  </span>
+  <span class="absValue">
+    (5/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.config;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import java.util.stream.Collectors;
+<i class="no-highlight">4</i>&nbsp;import javax.validation.ConstraintViolation;
+<i class="no-highlight">5</i>&nbsp;import javax.validation.ConstraintViolationException;
+<i class="no-highlight">6</i>&nbsp;import org.springframework.context.support.DefaultMessageSourceResolvable;
+<i class="no-highlight">7</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i class="no-highlight">8</i>&nbsp;import org.springframework.http.converter.HttpMessageNotReadableException;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.validation.BindException;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+<i class="no-highlight">11</i>&nbsp;import org.springframework.web.bind.annotation.ExceptionHandler;
+<i class="no-highlight">12</i>&nbsp;import org.springframework.web.bind.annotation.RestControllerAdvice;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;@RestControllerAdvice
+<b class="fc"><i class="no-highlight">15</i>&nbsp;public class ControllerExceptionHandler {</b>
+<i class="no-highlight">16</i>&nbsp;
+<i class="no-highlight">17</i>&nbsp;  @ExceptionHandler(BindException.class)
+<i class="no-highlight">18</i>&nbsp;  ResponseEntity&lt;String&gt; serverErrorHandler(BindException e) {
+<b class="nc"><i class="no-highlight">19</i>&nbsp;    var message =</b>
+<b class="nc"><i class="no-highlight">20</i>&nbsp;        e.getFieldErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).collect(</b>
+<b class="nc"><i class="no-highlight">21</i>&nbsp;            Collectors.joining(&quot;,&quot;));</b>
+<b class="nc"><i class="no-highlight">22</i>&nbsp;    return ResponseEntity.unprocessableEntity().body(message);</b>
+<i class="no-highlight">23</i>&nbsp;  }
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;  @ExceptionHandler(MethodArgumentNotValidException.class)
+<i class="no-highlight">26</i>&nbsp;  ResponseEntity&lt;String&gt; serverErrorHandler(MethodArgumentNotValidException e) {
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    var message = e.getBindingResult().getFieldErrors().stream()</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        .map(DefaultMessageSourceResolvable::getDefaultMessage).collect(</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;            Collectors.joining(&quot;,&quot;));</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;    return ResponseEntity.unprocessableEntity().body(message);</b>
+<i class="no-highlight">31</i>&nbsp;  }
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;  @ExceptionHandler(ConstraintViolationException.class)
+<i class="no-highlight">34</i>&nbsp;  ResponseEntity&lt;String&gt; serverErrorHandler(ConstraintViolationException e) {
+<b class="nc"><i class="no-highlight">35</i>&nbsp;    var message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage)</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;        .collect(Collectors.joining(&quot;,&quot;));</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;    return ResponseEntity.unprocessableEntity().body(message);</b>
+<i class="no-highlight">38</i>&nbsp;  }
+<i class="no-highlight">39</i>&nbsp;
+<i class="no-highlight">40</i>&nbsp;  @ExceptionHandler(HttpMessageNotReadableException.class)
+<i class="no-highlight">41</i>&nbsp;  ResponseEntity&lt;String&gt; serverErrorHandler(HttpMessageNotReadableException e) {
+<b class="nc"><i class="no-highlight">42</i>&nbsp;    return ResponseEntity.badRequest().body(e.getMessage());</b>
+<i class="no-highlight">43</i>&nbsp;  }
+<i class="no-highlight">44</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

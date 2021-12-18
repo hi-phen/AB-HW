@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > EmailLoginService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: EmailLoginService (com.ms.member.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">EmailLoginService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.service.impl;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.exception.MemberNotFoundException;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.repository.MemberRepository;
+<i class="no-highlight">5</i>&nbsp;import com.ms.member.service.LoginTokenCreateUseCase;
+<i class="no-highlight">6</i>&nbsp;import com.ms.member.service.MemberLoginUseCase;
+<i class="no-highlight">7</i>&nbsp;import com.ms.member.service.command.MemberLoginCommand;
+<i class="no-highlight">8</i>&nbsp;import com.ms.member.service.domain.LoginKeyType;
+<i class="no-highlight">9</i>&nbsp;import com.ms.member.service.model.LoginToken;
+<i class="no-highlight">10</i>&nbsp;import lombok.AllArgsConstructor;
+<i class="no-highlight">11</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;/**
+<i class="no-highlight">14</i>&nbsp; * 이메일을 이용한 로그인 서비스.
+<i class="no-highlight">15</i>&nbsp; */
+<i class="no-highlight">16</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">17</i>&nbsp;@AllArgsConstructor</b>
+<i class="no-highlight">18</i>&nbsp;public class EmailLoginService implements MemberLoginUseCase {
+<i class="no-highlight">19</i>&nbsp;
+<i class="no-highlight">20</i>&nbsp;  private final MemberRepository memberRepository;
+<i class="no-highlight">21</i>&nbsp;  private final LoginTokenCreateUseCase loginTokenCreateUseCase;
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;  @Override
+<i class="no-highlight">24</i>&nbsp;  public LoginToken login(MemberLoginCommand command) throws MemberNotFoundException {
+<b class="fc"><i class="no-highlight">25</i>&nbsp;    var member = memberRepository.findByEmailAndPassword(command.getKey(), command.getPassword())</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        .orElseThrow(MemberNotFoundException::new);</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;    return loginTokenCreateUseCase.create(member);</b>
+<i class="no-highlight">28</i>&nbsp;  }
+<i class="no-highlight">29</i>&nbsp;
+<i class="no-highlight">30</i>&nbsp;  @Override
+<i class="no-highlight">31</i>&nbsp;  public LoginKeyType getLoginKeyType() {
+<b class="fc"><i class="no-highlight">32</i>&nbsp;    return LoginKeyType.EMAIL;</b>
+<i class="no-highlight">33</i>&nbsp;  }
+<i class="no-highlight">34</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

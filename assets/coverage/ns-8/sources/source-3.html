@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ValidateMobileAuthTokenService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.mobileauth.service.impl</a>
+</div>
+
+<h1>Coverage Summary for Class: ValidateMobileAuthTokenService (com.ms.member.mobileauth.service.impl)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ValidateMobileAuthTokenService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.mobileauth.service.impl;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.mobileauth.client.MobileAuthApiClient;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.mobileauth.service.ValidateMobileAuthTokenUseCase;
+<i class="no-highlight">5</i>&nbsp;import com.ms.member.mobileauth.service.command.ValidateMobileAuthTokenCommand;
+<i class="no-highlight">6</i>&nbsp;import com.ms.member.mobileauth.service.exception.InvalidMobileAuthTokenException;
+<i class="no-highlight">7</i>&nbsp;import com.ms.member.mobileauth.service.model.MobileAuthTokenValidateResult;
+<i class="no-highlight">8</i>&nbsp;import lombok.RequiredArgsConstructor;
+<i class="no-highlight">9</i>&nbsp;import org.springframework.stereotype.Service;
+<i class="no-highlight">10</i>&nbsp;import org.springframework.web.client.RestClientException;
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;/**
+<i class="no-highlight">13</i>&nbsp; * 전화번호 인증 토큰 검증 유즈케이스의 기본 구현 서비스.
+<i class="no-highlight">14</i>&nbsp; */
+<i class="no-highlight">15</i>&nbsp;@Service
+<b class="fc"><i class="no-highlight">16</i>&nbsp;@RequiredArgsConstructor</b>
+<i class="no-highlight">17</i>&nbsp;public class ValidateMobileAuthTokenService implements ValidateMobileAuthTokenUseCase {
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;  private final MobileAuthApiClient mobileAuthApiClient;
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;  @Override
+<i class="no-highlight">22</i>&nbsp;  public MobileAuthTokenValidateResult validate(ValidateMobileAuthTokenCommand command)
+<i class="no-highlight">23</i>&nbsp;      throws InvalidMobileAuthTokenException {
+<i class="no-highlight">24</i>&nbsp;    try {
+<b class="fc"><i class="no-highlight">25</i>&nbsp;      return MobileAuthTokenValidateResult.of(mobileAuthApiClient.validate(command.getToken()));</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;    } catch (RestClientException e) {</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;      throw new InvalidMobileAuthTokenException();</b>
+<i class="no-highlight">28</i>&nbsp;    }
+<i class="no-highlight">29</i>&nbsp;  }
+<i class="no-highlight">30</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

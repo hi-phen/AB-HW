@@ -1,0 +1,99 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ValidateMobileAuthTokenUseCase</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.mobileauth.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ValidateMobileAuthTokenUseCase (com.ms.member.mobileauth.service)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+</tr>
+  <tr>
+    <td class="name">ValidateMobileAuthTokenUseCase$MockitoMock$1263962275</td>
+  </tr>
+  <tr>
+    <td class="name">ValidateMobileAuthTokenUseCase$MockitoMock$1263962275$auxiliary$0FilXp82</td>
+  </tr>
+  <tr>
+    <td class="name">ValidateMobileAuthTokenUseCase$MockitoMock$1263962275$auxiliary$8RZtUJJX</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.mobileauth.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import com.ms.member.mobileauth.service.command.ValidateMobileAuthTokenCommand;
+<i class="no-highlight">4</i>&nbsp;import com.ms.member.mobileauth.service.exception.InvalidMobileAuthTokenException;
+<i class="no-highlight">5</i>&nbsp;import com.ms.member.mobileauth.service.model.MobileAuthTokenValidateResult;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;/**
+<i class="no-highlight">8</i>&nbsp; * 전화번호 인증 토큰 검증 유즈케이스.
+<i class="no-highlight">9</i>&nbsp; */
+<i class="no-highlight">10</i>&nbsp;public interface ValidateMobileAuthTokenUseCase {
+<i class="no-highlight">11</i>&nbsp;
+<i class="no-highlight">12</i>&nbsp;  /**
+<i class="no-highlight">13</i>&nbsp;   * 토큰 검증.
+<i class="no-highlight">14</i>&nbsp;   *
+<i class="no-highlight">15</i>&nbsp;   * @param command 토큰 검증 요청 커맨드
+<i class="no-highlight">16</i>&nbsp;   * @return 토큰 검증 결과
+<i class="no-highlight">17</i>&nbsp;   * @throws InvalidMobileAuthTokenException 잘못 된 인증토큰 예외
+<i class="no-highlight">18</i>&nbsp;   */
+<i class="no-highlight">19</i>&nbsp;  MobileAuthTokenValidateResult validate(ValidateMobileAuthTokenCommand command)
+<i class="no-highlight">20</i>&nbsp;      throws InvalidMobileAuthTokenException;
+<i class="no-highlight">21</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>

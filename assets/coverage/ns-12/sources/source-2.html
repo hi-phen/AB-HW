@@ -1,0 +1,184 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MemberCreateRequest</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">com.ms.member.web.model</a>
+</div>
+
+<h1>Coverage Summary for Class: MemberCreateRequest (com.ms.member.web.model)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MemberCreateRequest</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (15/15)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">MemberCreateRequest$Of</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (10/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (16/16)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package com.ms.member.web.model;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import javax.validation.constraints.NotEmpty;
+<i class="no-highlight">4</i>&nbsp;import javax.validation.constraints.Pattern;
+<i class="no-highlight">5</i>&nbsp;import lombok.AccessLevel;
+<i class="no-highlight">6</i>&nbsp;import lombok.Builder;
+<i class="no-highlight">7</i>&nbsp;import lombok.Getter;
+<i class="no-highlight">8</i>&nbsp;import lombok.NoArgsConstructor;
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;/**
+<i class="no-highlight">11</i>&nbsp; * 회원 가입(생성) 요청.
+<i class="no-highlight">12</i>&nbsp; */
+<i class="no-highlight">13</i>&nbsp;@Getter
+<b class="fc"><i class="no-highlight">14</i>&nbsp;@NoArgsConstructor(access = AccessLevel.PRIVATE)</b>
+<i class="no-highlight">15</i>&nbsp;public class MemberCreateRequest {
+<i class="no-highlight">16</i>&nbsp;  @NotEmpty(message = &quot;전화번호 인증 정보가 없습니다.&quot;)
+<b class="fc"><i class="no-highlight">17</i>&nbsp;  String mobileAuthToken;</b>
+<i class="no-highlight">18</i>&nbsp;  @NotEmpty(message = &quot;전화번호가 입력되지 않았습니다.&quot;)
+<i class="no-highlight">19</i>&nbsp;  @Pattern(regexp = &quot;[0-9]{3}-[0-9]{3,4}-[0-9]{4}&quot;, message = &quot;전화번호 형식이 올바르지 않습니다.&quot;)
+<b class="fc"><i class="no-highlight">20</i>&nbsp;  String mobile;</b>
+<i class="no-highlight">21</i>&nbsp;  @NotEmpty(message = &quot;이메일이 입력되지 않았습니다.&quot;)
+<i class="no-highlight">22</i>&nbsp;  @Pattern(
+<i class="no-highlight">23</i>&nbsp;      regexp = &quot;^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$&quot;,
+<i class="no-highlight">24</i>&nbsp;      message = &quot;이메일 형식이 올바르지 않습니다.&quot;)
+<b class="fc"><i class="no-highlight">25</i>&nbsp;  String email;</b>
+<i class="no-highlight">26</i>&nbsp;  @NotEmpty(message = &quot;닉네임이 입력되지 않았습니다.&quot;)
+<b class="fc"><i class="no-highlight">27</i>&nbsp;  String nickName;</b>
+<i class="no-highlight">28</i>&nbsp;  @NotEmpty(message = &quot;패스워드가 입력되지 않았습니다.&quot;)
+<b class="fc"><i class="no-highlight">29</i>&nbsp;  String password;</b>
+<i class="no-highlight">30</i>&nbsp;  @NotEmpty(message = &quot;이름이 입력되지 않았습니다.&quot;)
+<b class="fc"><i class="no-highlight">31</i>&nbsp;  String name;</b>
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;  /**
+<i class="no-highlight">34</i>&nbsp;   * 기본 생성자.
+<i class="no-highlight">35</i>&nbsp;   *
+<i class="no-highlight">36</i>&nbsp;   * @param mobileAuthToken 전화번호 인증 토큰
+<i class="no-highlight">37</i>&nbsp;   * @param mobile          전화번호
+<i class="no-highlight">38</i>&nbsp;   * @param email           이메일
+<i class="no-highlight">39</i>&nbsp;   * @param nickName        닉네임
+<i class="no-highlight">40</i>&nbsp;   * @param password        패스워드
+<i class="no-highlight">41</i>&nbsp;   * @param name            이름
+<i class="no-highlight">42</i>&nbsp;   */
+<b class="fc"><i class="no-highlight">43</i>&nbsp;  @Builder(builderMethodName = &quot;of&quot;, builderClassName = &quot;Of&quot;)</b>
+<i class="no-highlight">44</i>&nbsp;  public MemberCreateRequest(String mobileAuthToken, String mobile, String email,
+<b class="fc"><i class="no-highlight">45</i>&nbsp;                             String nickName, String password, String name) {</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;    this.mobileAuthToken = mobileAuthToken;</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;    this.mobile = mobile;</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;    this.email = email;</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;    this.nickName = nickName;</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;    this.password = password;</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;    this.name = name;</b>
+<i class="no-highlight">52</i>&nbsp;  }
+<i class="no-highlight">53</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2021-12-18 22:47</div>
+</div>
+</body>
+</html>
