@@ -43,4 +43,12 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
    * @return 존재 여부
    */
   boolean existsByMobile(String mobile);
+
+  /**
+   * 전화번호로 회원 조회.
+   *
+   * @param mobile 전화번호
+   * @return 회원 옵셔널
+   */
+  Optional<Member> findByMobile(String mobile);
 }
