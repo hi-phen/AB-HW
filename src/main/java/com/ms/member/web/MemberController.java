@@ -1,11 +1,15 @@
 package com.ms.member.web;
 
 import com.ms.member.exception.DuplicateValueException;
+import com.ms.member.exception.MemberNotFoundException;
 import com.ms.member.mobileauth.service.ValidateMobileAuthTokenUseCase;
 import com.ms.member.mobileauth.service.command.ValidateMobileAuthTokenCommand;
 import com.ms.member.mobileauth.service.exception.InvalidMobileAuthTokenException;
 import com.ms.member.service.MemberCreateUseCase;
+import com.ms.member.service.command.MemberLoginCommand;
 import com.ms.member.service.command.MemberPersistCommand;
+import com.ms.member.service.impl.LoginServiceFactory;
+import com.ms.member.web.domain.LoginRequest;
 import com.ms.member.web.domain.MemberCreateRequest;
 import java.net.URI;
 import javax.validation.Valid;
@@ -26,6 +30,7 @@ public class MemberController {
 
   private final MemberCreateUseCase memberCreateUseCase;
   private final ValidateMobileAuthTokenUseCase validateMobileAuthTokenUseCase;
+  private final LoginServiceFactory loginServiceFactory;
 
   /**
    * 회원 가입(생성).
@@ -62,4 +67,21 @@ public class MemberController {
         ValidateMobileAuthTokenCommand.of(request.getMobileAuthToken()));
   }
 
+  /**
+   * 회원 로그인.
+   *
+   * @param request 로그인 정보
+   * @return 로그인 토큰 또는 실패시 401 응답
+   */
+  @PostMapping("/member/login")
+  ResponseEntity<?> login(@RequestBody @Valid LoginRequest request) {
+    try {
+      return ResponseEntity.ok(
+          loginServiceFactory.getLoginService(request.getLoginKeyType())
+              .login(MemberLoginCommand.of(request.getKey(), request.getPassword()))
+      );
+    } catch (MemberNotFoundException e) {
+      return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    }
+  }
 }
