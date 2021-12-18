@@ -1,0 +1,12 @@
+### 회원 가입(생성)
+POST http://localhost:8080/member
+Content-Type: application/json
+
+{
+  "mobileAuthToken": "token",
+  "mobile": "010-1234-1234",
+  "email": "email@emali.com",
+  "nickName": "nick",
+  "password": "pwd",
+  "name": "name"
+}
