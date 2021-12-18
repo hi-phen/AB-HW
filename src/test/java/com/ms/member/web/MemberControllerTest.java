@@ -16,11 +16,13 @@ import com.ms.member.mobileauth.service.exception.InvalidMobileAuthTokenExceptio
 import com.ms.member.service.MemberCreateUseCase;
 import com.ms.member.service.MemberFindUseCase;
 import com.ms.member.service.MemberLoginUseCase;
+import com.ms.member.service.ResetPasswordUseCase;
 import com.ms.member.service.domain.LoginKeyType;
 import com.ms.member.service.impl.LoginServiceFactory;
 import com.ms.member.service.model.LoginToken;
 import com.ms.member.web.model.LoginRequest;
 import com.ms.member.web.model.MemberCreateRequest;
+import com.ms.member.web.model.PasswordResetRequest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -52,6 +54,9 @@ class MemberControllerTest {
 
   @MockBean
   MemberFindUseCase memberFindUseCase;
+
+  @MockBean
+  ResetPasswordUseCase resetPasswordUseCase;
 
   @Nested
   @DisplayName("회원을 생성 할 때")
@@ -190,6 +195,36 @@ class MemberControllerTest {
 
   }
 
+  @Nested
+  @DisplayName("패스워드를 재설정 할 때")
+  class DescribeResetPassword {
+    PasswordResetRequest givenRequest() {
+      return PasswordResetRequest.of()
+          .mobileAuthToken("010-1234-1234").password("pwd").build();
+    }
+
+    @DisplayName("전화번호 인증 토큰과 전화번호가 일치하지 않으면 401를 리턴한다")
+    @Test
+    void unAuthorized() throws Exception {
+      mockMvc.perform(
+              MockMvcRequestBuilders.put("/member/010-1234-4321")
+                  .contentType(MediaType.APPLICATION_JSON)
+                  .content(objectMapper.writeValueAsString(givenRequest()))
+          ).andDo(print())
+          .andExpect(status().isUnauthorized());
+    }
+
+    @DisplayName("정상 처리를 하면 200을 응답한다")
+    @Test
+    void success() throws Exception {
+      mockMvc.perform(
+              MockMvcRequestBuilders.put("/member/010-1234-1234")
+                  .contentType(MediaType.APPLICATION_JSON)
+                  .content(objectMapper.writeValueAsString(givenRequest()))
+          ).andDo(print())
+          .andExpect(status().isOk());
+    }
+  }
 
 }
 
