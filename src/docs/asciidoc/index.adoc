@@ -7,3 +7,172 @@
 :sectlinks:
 :snippets: ../../../build/generated-snippets
 
+== 전화번호 인증 요청
+
+전화번호로 인증을 요청합니다.
+
+인증을 요청하면 SMS를 통해 인증번호가 전송됩니다.
+
+=== Request
+
+include::{snippets}/request-mobile-auth/http-request.adoc[]
+
+include::{snippets}/request-mobile-auth/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/request-mobile-auth/http-response.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|422
+|올바르지 않은 전화 번호
+
+|===
+
+== 전화번호 인증 토큰 요청
+
+전화번호와 인증번호로 인증토큰을 요청합니다.
+
+=== Request
+
+include::{snippets}/get-mobile-auth-token/http-request.adoc[]
+
+include::{snippets}/get-mobile-auth-token/request-parameters.adoc[]
+
+=== Response
+
+include::{snippets}/get-mobile-auth-token/http-response.adoc[]
+
+include::{snippets}/get-mobile-auth-token/response-fields.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|400
+|올바르지 않은 인증 번호
+
+|===
+
+== 회원 가입
+
+=== Request
+
+include::{snippets}/create/http-request.adoc[]
+
+include::{snippets}/create/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/create/http-response.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|422
+|올바르지 않은 전화번호 인증 토큰
+
+|===
+
+== 로그인
+
+=== Request
+
+include::{snippets}/login/http-request.adoc[]
+
+include::{snippets}/login/request-fields.adoc[]
+
+[[LoginKeyType]]
+LoginKeyType
+
+|===
+|Value |설명
+
+|EMAIL
+|이메일
+
+|MOBILE
+|전화번호
+|===
+
+=== Response
+
+include::{snippets}/login/http-response.adoc[]
+
+include::{snippets}/login/response-fields.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|401
+|올바르지 않은 로그인 정보
+
+|===
+
+== 내 정보 조회
+
+=== Request
+
+include::{snippets}/get-member/http-request.adoc[]
+
+include::{snippets}/get-member/request-headers.adoc[]
+
+include::{snippets}/get-member/path-parameters.adoc[]
+
+=== Response
+
+include::{snippets}/get-member/http-response.adoc[]
+
+include::{snippets}/get-member/response-fields.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|401
+|올바르지 않은 토큰 정보
+
+|404
+|회원이 존재하지 않음
+
+|===
+
+== 비밀번호 재설정
+
+=== Request
+
+include::{snippets}/reset-password/http-request.adoc[]
+
+include::{snippets}/reset-password/path-parameters.adoc[]
+
+include::{snippets}/reset-password/request-fields.adoc[]
+
+=== Response
+
+include::{snippets}/reset-password/http-response.adoc[]
+
+=== 에러 응답
+
+|===
+|Status Code | 원인
+
+|401
+|올바르지 않은 전화번호 인증 토큰 정보
+
+|422
+|올바르지 않은 전화번호 인증 토큰 정보
+
+|404
+|회원이 존재하지 않음
+
+|===

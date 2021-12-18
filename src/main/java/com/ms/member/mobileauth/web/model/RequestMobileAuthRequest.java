@@ -2,6 +2,7 @@ package com.ms.member.mobileauth.web.model;
 
 import javax.validation.constraints.Pattern;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +21,7 @@ public class RequestMobileAuthRequest {
    *
    * @param mobile 전화번호
    */
+  @Builder(builderClassName = "Of", builderMethodName = "of")
   public RequestMobileAuthRequest(String mobile) {
     this.mobile = mobile;
   }
