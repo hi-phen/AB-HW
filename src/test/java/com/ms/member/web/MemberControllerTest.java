@@ -1,6 +1,7 @@
 package com.ms.member.web;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -13,6 +14,7 @@ import com.ms.member.exception.MemberNotFoundException;
 import com.ms.member.mobileauth.service.ValidateMobileAuthTokenUseCase;
 import com.ms.member.mobileauth.service.exception.InvalidMobileAuthTokenException;
 import com.ms.member.service.MemberCreateUseCase;
+import com.ms.member.service.MemberFindUseCase;
 import com.ms.member.service.MemberLoginUseCase;
 import com.ms.member.service.domain.LoginKeyType;
 import com.ms.member.service.impl.LoginServiceFactory;
@@ -47,6 +49,9 @@ class MemberControllerTest {
 
   @Autowired
   ObjectMapper objectMapper;
+
+  @MockBean
+  MemberFindUseCase memberFindUseCase;
 
   @Nested
   @DisplayName("회원을 생성 할 때")
@@ -141,5 +146,50 @@ class MemberControllerTest {
           .andExpect(content().json("{\"token\":\"1\"}"));
     }
   }
+
+  @Nested
+  @DisplayName("내정보를 조회 할 때")
+  class DescribeGetMember {
+    @DisplayName("로그인 토큰과 조회 회원 아이디가 일치 하지 않으면 401을 리턴한다.")
+    @Test
+    void unAuthorized() throws Exception {
+      mockMvc.perform(
+              MockMvcRequestBuilders.get("/member/1").
+                  header("Authorization", "2")
+          ).andDo(print())
+          .andExpect(status().isUnauthorized());
+
+    }
+
+    @DisplayName("회원을 찾지 못하면 404를 리턴합니다.")
+    @Test
+    void notFound() throws Exception {
+
+      given(memberFindUseCase.findById(anyLong())).willThrow(new MemberNotFoundException());
+
+      mockMvc.perform(
+              MockMvcRequestBuilders.get("/member/1").
+                  header("Authorization", "1")
+          ).andDo(print())
+          .andExpect(status().isNotFound());
+    }
+
+    @DisplayName("정상 조회 하면 회원 정보를 리턴합니다.")
+    @Test
+    void success() throws Exception {
+      given(memberFindUseCase.findById(anyLong())).willReturn(
+          Member.of().id(1L).build()
+      );
+
+      mockMvc.perform(
+              MockMvcRequestBuilders.get("/member/1").
+                  header("Authorization", "1")
+          ).andDo(print())
+          .andExpect(status().isOk());
+    }
+
+  }
+
+
 }
 
