@@ -1,4 +1,4 @@
-package com.ms.member.web.domain;
+package com.ms.member.web.model;
 
 import com.ms.member.service.domain.LoginKeyType;
 import javax.validation.constraints.NotEmpty;

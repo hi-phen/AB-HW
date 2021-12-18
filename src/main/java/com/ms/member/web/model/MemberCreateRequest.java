@@ -1,4 +1,4 @@
-package com.ms.member.web.domain;
+package com.ms.member.web.model;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
