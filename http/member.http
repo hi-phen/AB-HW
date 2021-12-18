@@ -20,3 +20,7 @@ Content-Type: application/json
   "key": "email@emali.com",
   "password": "pwd"
 }
+
+### 회원 조회
+GET http://localhost:8080/member/1
+Authorization: 1
