@@ -1,0 +1,10 @@
+### 전화번호 인증 시작 요청
+POST http://localhost:8080/mobile-auth/
+Content-Type: application/json
+
+{
+  "mobile": "010-1234-1234"
+}
+
+### 전화번호 인증 토큰 요청
+GET http://localhost:8080/mobile-auth/token?mobile=010-1234-1234&authNumber=01234
